@@ -1,0 +1,76 @@
+// can we automate the application when it is not stable? No
+ A) First important thing is to testing the product/feature, and the application should be stable then only we start writting the automation
+If you code is impacted totally daily basis, lot of changes are happening, then we don't prefer to automate.
+If our locaters are getting changed, then also we don't prefer to automate
+
+Note: automation is always done for the happy path scenarios, and once the application is stable for the future relaeses. and I concentrate
+on ne feature manual testing and old stable feature for automation 
+
+
+Step 1: Add dependencies in the POM.xml
+         1. Selenium_JAva
+         2. WebDriverManager
+         3.TestNg
+ Step2: Add Plug ins
+        1. Surefire 
+        2.Compiler
+        
+ Step3: Install "TestNg
+        Note: For doing above step, go to hep --> Market Place--> install "Test Ng" 
+        
+Step4: Create Pages using POM design pattern (src/main/java)
+      Note: 1. Page --> responsibility to give the behaviour of the page( So don't write any assertions/ driver.get....etc here)
+      
+      
+Step 5: Create 4 packages (src/main/java)
+        1. com.qa.projectname.factory --->  DriverFactory.java (first write the code for this class)
+        2. com.qa.projectname.listeners ---> AllureReport.java, ExtentReport.java
+        3. com.qa.projectname.pages ----> Login page, Accounts Page, Home page, Codes Page, Excerpts, Descriptors, Memo, Training, Security, Projects Page
+        4. com.qa.projectname.utils ----> Constant, Element Util, Excel Util, Java Script util
+        
+Step 6: Create 2 packages (src/test/java)
+        1. com.qa.projectNAme.base ---> BaseTestJava
+        2. Com.qa.projectName.tests ---> create all the tests for each page class
+                                         Login page Test, 
+                                         Accounts Page Test, 
+                                         Home page Test,
+                                          Codes Page Test,
+                                           Excerpts Test,
+                                            Descriptors Test,
+                                             Memo Test, 
+                                             Training Test, Security Test, Projects Page Test
+                                             
+Step7: create 2 packages (src/test/resources)
+      1. config, 2. testrunner
+      
+      
+      
+      
+ Concepts: 1. Page chaining, 
+            2. DataProvider(key word mapped)   --> is a testng feature, don't write in the src/main/java
+            
+            
+ Pagechaining: example: after login submit button it is navigating to the accountPage, so first we need to create "Account page" 
+ object in the "LoginPage" class, so that Account page class and Account pageTest class can communicate with each other.
+ 
+ 
+  PageFactory: for page factory we need to create one extra class for that, @findBy(very soon it will be depricated in java also)
+ 
+ 
+ 
+ Manual vs Automation TC mapping document:
+ 
+ TC01-- Loggin --- yes(Automated)----loginTest() [TestNg method name should be mentioned here]
+ TC02---Search ---yes(Automated)---SearchTest() [TestNg method name]
+ TC04---Payment----No(not Automated)---PaymentTest() [TestNg method name]
+ 
+ out of 100---50% TC are automated (), keep slowly increase the automation test cases to 80%
+ 
+ 
+ // if you get any red color mark on the pop.xml file/project, right click on the "project" and click "Maven" and click "Update" the project
+    and remove all the errors   
+    
+    
+  // to maintain ExcelUtil.java, we need add Apache POI Api dependency first (total 6 dependencies)
+  Selenium /java libraries won't provide any libraries to interact with excel sheet, so we need one 3rd party library to interact with excel                                  
+        
